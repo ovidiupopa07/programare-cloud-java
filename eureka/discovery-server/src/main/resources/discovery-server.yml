@@ -2,17 +2,7 @@ spring:
   application:
     name: discovery-service
 # Configure this Discovery Server
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    registerWithEureka: false # do not auto-register as client
-    fetchRegistry: false
-
-server:
-  port: 3000   # where this discovery server is accessible
-  waitTimeInMsWhenSyncEmpty: 0
-  address: 0.0.0.0
+#TODO here you add configurations for server
 
 logging:
   pattern:

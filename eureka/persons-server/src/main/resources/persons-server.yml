@@ -24,17 +24,7 @@ server:
   address: 0.0.0.0
 
 # Discovery Server Access
-eureka:
-  client:
-    registerWithEureka: true
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://localhost:3000/eureka/
-
-
-  instance:
-    leaseRenewalIntervalInSeconds: 5
-    preferIpAddress: false
+#TODO here you add configurations for eureka client
 
 info:
   app:
