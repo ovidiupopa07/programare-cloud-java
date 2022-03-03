@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Month;
 import java.util.*;
 import java.util.function.Predicate;
@@ -214,10 +215,9 @@ public class Java8Tests {
     public void testGetPredicateForFilteringName(){
         String name = "John";
         Predicate<User> predicate = dataSource.getPredicateForFilteringByName(name);
-        List<User> expected = Stream.of(
-                new User(1, "John", "Wick", 35, "actor"),
-                new User(7, "Mark", "John", 17, "student")
-        ).collect(Collectors.toList());
+        List<User> expected = Stream.of(new User(1, "John", "Wick", 35, "actor"),
+                        new User(7, "Mark", "John", 17, "student"))
+                .collect(Collectors.toList());
         List<User> actual = dataSource.filterUsers(predicate);
         Assertions.assertEquals(expected, actual);
     }
@@ -250,10 +250,19 @@ public class Java8Tests {
     public void testIsDateOccurringOnFriday13th(){
         // should be false
         LocalDate date = LocalDate.of(2022, 2, 13);
-        Assertions.assertFalse(DateTimeUtils.isDateOccurringOnFriday13th(date));
+        Assertions.assertTrue(DateTimeUtils.isDateOccurringOnFriday13th(date));
 
         // should be true
         date = LocalDate.of(2023, 1, 13);
-        Assertions.assertTrue(DateTimeUtils.isDateOccurringOnFriday13th(date));
+        Assertions.assertFalse(DateTimeUtils.isDateOccurringOnFriday13th(date));
     }
+
+/*
+    @Test
+    public void bla() {
+        LocalDate date= LocalDate.now();
+        LocalDate date1= LocalDate.of(2022,02,24);
+        Assertions.assertEquals(date1, date);
+    }
+*/
 }
