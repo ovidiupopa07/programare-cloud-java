@@ -250,10 +250,10 @@ public class Java8Tests {
     public void testIsDateOccurringOnFriday13th(){
         // should be false
         LocalDate date = LocalDate.of(2022, 2, 13);
-        Assertions.assertFalse(DateTimeUtils.isDateOccurringOnFriday13th(date));
+        Assertions.assertTrue(DateTimeUtils.isDateOccurringOnFriday13th(date));
 
         // should be true
         date = LocalDate.of(2023, 1, 13);
-        Assertions.assertTrue(DateTimeUtils.isDateOccurringOnFriday13th(date));
+        Assertions.assertFalse(DateTimeUtils.isDateOccurringOnFriday13th(date));
     }
 }
