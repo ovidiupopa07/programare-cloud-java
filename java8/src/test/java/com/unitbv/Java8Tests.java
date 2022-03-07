@@ -129,7 +129,7 @@ public class Java8Tests {
     }
 
     @Test
-    public void testFindByFirstName(){
+    public void testFindByFirstName() throws RuntimeException {
         // should find Jayce
         User expected = new User(2, "Jayce", "Lucas", 35, "driver");
         User actual = dataSource.findByFirstName("Jayce");
