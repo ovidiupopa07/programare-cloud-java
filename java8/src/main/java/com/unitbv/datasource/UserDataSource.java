@@ -61,7 +61,7 @@ public class UserDataSource {
     public List<User> mergeUserLists(List<User> l1, List<User> l2) {
         return Stream.of(l1, l2)
                 .flatMap(Collection::stream)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     // <---------- TO DO ---------->
@@ -70,7 +70,7 @@ public class UserDataSource {
     public List<String> getFullNames() {
         return users.stream()
                 .map(user -> user.getFirstName() + " " + user.getLastName())
-                .collect(Collectors.toList());
+                .toList();
     }
 
     // Get the job of the oldest user
@@ -78,15 +78,13 @@ public class UserDataSource {
         return users.stream()
                 .max(Comparator.comparingInt(User::getAge))
                 .orElse(new User()).getJob();
-        // return getUserWithHighestAge_V2().getJob();
     }
 
     // Get user (distinct) jobs sorted alphabetically
     public Set<String> getAllUserJobsSorted() {
         return users.stream()
                 .map(User::getJob)
-                .sorted()
-                .collect(Collectors.toCollection(LinkedHashSet::new));
+                .collect(Collectors.toSet());
     }
 
     // Find user by first name - throw RuntimeException if not found
@@ -140,7 +138,7 @@ public class UserDataSource {
 
     // Get a predicate for filtering by the given name - applies to both firstName and lastName
     public Predicate<User> getPredicateForFilteringByName(String name) {
-        return (user) -> user.getFirstName().equals(name) || user.getLastName().equals(name);
+        return user -> user.getFirstName().equals(name) || user.getLastName().equals(name);
     }
 
     // Get a comparator for User type - compare by age ascending, then by job alphabetically
@@ -160,13 +158,13 @@ public class UserDataSource {
     public List<User> filterUsers(Predicate<? super User> predicate) {
         return users.stream()
                 .filter(predicate)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     // Sort users using the given Comparator
     public List<User> sortUsers(Comparator<? super User> comparator) {
         return users.stream()
                 .sorted(comparator)
-                .collect(Collectors.toList());
+                .toList();
     }
 }
