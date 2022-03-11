@@ -8,7 +8,8 @@ public class DateTimeUtils {
     // Get the number of years until the given date
     public static int getNumberOfYearsUntil(LocalDate date){
         // your code here
-        return 0;
+        LocalDate currentDate =LocalDate.now();
+        return currentDate.getYear()-date.getYear();
     }
 
     // Check if the given date occurs on Friday the 13th
