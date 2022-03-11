@@ -214,7 +214,7 @@ public class Java8Tests {
     public void testGetPredicateForFilteringName(){
         String name = "John";
         Predicate<User> predicate = dataSource.getPredicateForFilteringByName(name);
-        List<User> expected = Stream.of(new User(1, "John", "Wick", 35, "actor"))
+        List<User> expected = Stream.of(new User(1, "John", "Wick", 35, "actor"), new User(7, "Mark", "John", 17, "student"))
                 .collect(Collectors.toList());
         List<User> actual = dataSource.filterUsers(predicate);
         Assertions.assertEquals(expected, actual);
@@ -224,13 +224,13 @@ public class Java8Tests {
     public void testSortUsers(){
         Comparator<User> comparator = dataSource.getUserComparator();
         List<User> expected = Stream.of(
+                new User(4, "Doug", "Rain", 55, "chef"),
+                new User(3, "Jack", "Spades", 18, "gamer"),
+                new User(2, "Jayce", "Lucas", 35, "driver"),
+                new User(1, "John", "Wick", 35, "actor"),
                 new User(5, "Lena", "Sunday", 12, "student"),
                 new User(7, "Mark", "John", 17, "student"),
-                new User(3, "Jack", "Spades", 18, "gamer"),
-                new User(6, "Missy", "Cooper", 23, "actor"),
-                new User(1, "John", "Wick", 35, "actor"),
-                new User(2, "Jayce", "Lucas", 35, "driver"),
-                new User(4, "Doug", "Rain", 55, "chef")
+                new User(6, "Missy", "Cooper", 23, "actor")
         ).collect(Collectors.toList());
         List<User> actual = dataSource.sortUsers(comparator);
         Assertions.assertEquals(expected, actual);

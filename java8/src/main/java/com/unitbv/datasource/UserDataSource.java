@@ -1,5 +1,6 @@
 package com.unitbv.datasource;
 
+import com.unitbv.comparator.UserComparator;
 import com.unitbv.model.User;
 
 import java.util.*;
@@ -72,66 +73,108 @@ public class UserDataSource {
 
     // Get the full names for all users
     public List<String> getFullNames(){
-        // your code here
-        return new ArrayList<>();
+    	List<String> fullNames = new ArrayList<>();
+    	for(int index = 0; index < users.size(); ++index) {
+        	fullNames.add(String.format("%s %s", users.get(index).getFirstName(), users.get(index).getLastName()));
+        }
+    	
+        return fullNames;
     }
 
     // Get the job of the oldest user
     public String getJobOfTheOldestUser(){
-        // your code here
-        return "";
+    	String oldestJob = "";
+    	int oldestAge = 0;
+    	for(int index = 0; index < users.size(); ++index) {
+        	if(oldestAge < users.get(index).getAge()) {
+        		oldestJob = users.get(index).getJob();
+        		oldestAge = users.get(index).getAge();
+        	}
+        }
+        return oldestJob;
     }
 
     // Get user (distinct) jobs sorted alphabetically
     public Set<String> getAllUserJobsSorted(){
-        // your code here
-        return new HashSet<>();
+    	List<String> jobs = new ArrayList<String>();
+    	for(int index = 0; index < users.size(); ++index) {
+        	jobs.add(users.get(index).getJob());
+        }
+    	Collections.sort(jobs);
+        return new HashSet<>(jobs);
     }
 
     // Find user by first name - throw RuntimeException if not found
     public User findByFirstName(String firstName){
-        // your code here
-        return new User();
+    	for(int index = 0; index < users.size(); ++index) {
+        	if(users.get(index).getFirstName().equals(firstName)) {
+        		return users.get(index);
+        	}
+        }
+    	
+    	throw new RuntimeException();
     }
 
     // Check if all users are older than the specified age
     public boolean areAllUsersOlderThan(int age){
-        // your code here - please try with allMatch/noneMatch
+        Predicate<User> predicate = u->u.getAge() > age;
+        
+        if(users.stream().allMatch(predicate)) {
+        	return true;
+        }
+        
         return false;
     }
 
     // Add a new user - if there is a user with the same id, don't add and throw a RuntimeException
     public void addUser(User user){
-        // your code here - HINT: use ifPresent() method from Optional
+        for(int index = 0; index < users.size(); ++index) {
+        	if(users.get(index).getId() == user.getId()) {
+        		throw new RuntimeException();
+        	}
+        }
+        users.add(user);
     }
 
     // For all students (user.job = "student"), change the job to "graduate" and add 5 years to their age
     public void changeAllStudentsJobsAndAges(){
-        // your code here
+    	for(int index = 0; index < users.size(); ++index) {
+        	if(users.get(index).getJob().equals("student")) {
+        		users.get(index).setJob("graduate");
+        		users.get(index).setAge(users.get(index).getAge()+5);
+        	}
+        }
     }
 
     // Count users that have the given Job
     public long countUsersHavingTheSpecifiedJob(String job){
-        // your code here
-        return 0;
+    	int total = 0;
+    	for(int index = 0; index < users.size(); ++index) {
+        	if(users.get(index).getJob().equals(job)) {
+        		++total;
+        	}
+        }
+        return total;
     }
 
     // Get a map where the key is the user id and the value is the User object itself
     public Map<Integer, User> getMapOfUsers(){
-        // your code here
-        return new HashMap<>();
+        Map<Integer, User> userMap = new HashMap<>();
+    	for(int index = 0; index < users.size(); ++index) {
+        	userMap.put(users.get(index).getId(), users.get(index));
+        }
+    	
+        return userMap;
     }
 
     // Get a predicate for filtering by the given name - applies to both firstName and lastName
     public Predicate<User> getPredicateForFilteringByName(String name){
-        // your code here
-        return null;
+    	return u->u.getFirstName().contains(name) || u.getLastName().contains(name);
     }
 
     // Get a comparator for User type - compare by age ascending, then by job alphabetically
     public Comparator<User> getUserComparator(){
-        // your code here
-        return null;
+        return new UserComparator();
     }
 
     // Filter users using the given Predicate

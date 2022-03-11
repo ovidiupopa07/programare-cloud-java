@@ -35,8 +35,8 @@ public class SimpleDependantCfgTest {
         assertNotNull(customDependantBean);
 
         // no bean named 'simpleBean' and 'dependantBean'
-        assertThrows(NoSuchBeanDefinitionException.class, () -> ctx.getBean("simpleBean", SimpleBean.class));
-        assertThrows(NoSuchBeanDefinitionException.class, () -> ctx.getBean("dependantBean", DependantBean.class));
+        assertThrows(NoSuchBeanDefinitionException.class, () -> ctx.getBean("simpleBean2", SimpleBean.class));
+        assertThrows(NoSuchBeanDefinitionException.class, () -> ctx.getBean("dependantBean2", DependantBean.class));
 
         ctx.close();
     }
