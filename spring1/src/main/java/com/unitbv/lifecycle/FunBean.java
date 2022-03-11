@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-public class FunBean {
+public class FunBean implements InitializingBean,DisposableBean{
     private Logger logger = LoggerFactory.getLogger(FunBean.class);
 
     private DepBean depBean;
@@ -18,5 +18,10 @@ public class FunBean {
         System.out.println("init done");
     }
 
-    private void destroy(){System.out.println("destroy done");}
+    public void destroy(){System.out.println("destroy done");}
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+
+    }
 }
