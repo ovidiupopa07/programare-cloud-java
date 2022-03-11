@@ -72,54 +72,122 @@ public class UserDataSource {
 
     // Get the full names for all users
     public List<String> getFullNames(){
-        // your code here
-        return new ArrayList<>();
+        List<String> fullNamesList = new ArrayList<String>();
+
+        for (User user: users)
+        {
+            String fullName = user.getFirstName() + " " + user.getLastName();
+            fullNamesList.add(fullName);
+        }
+
+        return fullNamesList;
     }
 
     // Get the job of the oldest user
     public String getJobOfTheOldestUser(){
-        // your code here
-        return "";
+        User user = getUserWithHighestAge();
+
+        return user.getJob();
     }
 
     // Get user (distinct) jobs sorted alphabetically
     public Set<String> getAllUserJobsSorted(){
-        // your code here
-        return new HashSet<>();
+        List<String> allJobs = new ArrayList<>();
+        Set<String> sortedJobs = new HashSet<>();
+
+        for(User user: users)
+        {
+            allJobs.add(user.getJob());
+        }
+
+        Collections.sort(allJobs);
+
+        for(String job: allJobs)
+        {
+            sortedJobs.add(job);
+        }
+
+        return sortedJobs;
     }
 
     // Find user by first name - throw RuntimeException if not found
     public User findByFirstName(String firstName){
-        // your code here
-        return new User();
+        User foundUser = new User();
+        Boolean found = false;
+
+        try
+        {
+            for(User user: users)
+            {
+                if(user.getFirstName() == firstName)
+                {
+                    foundUser = user;
+                    found = true;
+                }
+            }
+            if(!found)
+            {
+                throw new RuntimeException();
+            }
+            else
+            {
+                return foundUser;
+            }
+        } catch (RuntimeException e)
+        {
+            System.out.println("RuntimeException thrown");
+        }
+        return foundUser;
     }
 
     // Check if all users are older than the specified age
     public boolean areAllUsersOlderThan(int age){
-        // your code here - please try with allMatch/noneMatch
-        return false;
+        return users.stream().allMatch(u -> u.getAge() > age);
     }
 
     // Add a new user - if there is a user with the same id, don't add and throw a RuntimeException
     public void addUser(User user){
-        // your code here - HINT: use ifPresent() method from Optional
+        Optional<User> newUser = Optional.ofNullable(user);
+        newUser.ifPresent(theUser ->new User());
+
+        newUser.orElseThrow(()->new RuntimeException());
     }
 
     // For all students (user.job = "student"), change the job to "graduate" and add 5 years to their age
     public void changeAllStudentsJobsAndAges(){
-        // your code here
+        for (User user: users)
+        {
+            if(user.getJob() == "student")
+            {
+                user.setJob("graduate");
+                user.setAge(user.getAge() + 5);
+            }
+        }
     }
 
     // Count users that have the given Job
     public long countUsersHavingTheSpecifiedJob(String job){
-        // your code here
-        return 0;
+        long count = 0;
+        for (User user : users)
+        {
+            if(user.getJob() == job)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     // Get a map where the key is the user id and the value is the User object itself
     public Map<Integer, User> getMapOfUsers(){
-        // your code here
-        return new HashMap<>();
+        Map<Integer, User> map = new HashMap<>();
+        for (User user: users)
+        {
+            map.put(user.getId(), user);
+        }
+
+        return map;
     }
 
     // Get a predicate for filtering by the given name - applies to both firstName and lastName
