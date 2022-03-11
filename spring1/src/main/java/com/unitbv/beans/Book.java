@@ -2,7 +2,7 @@ package com.unitbv.beans;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Book implements Item {
 
     private String title;

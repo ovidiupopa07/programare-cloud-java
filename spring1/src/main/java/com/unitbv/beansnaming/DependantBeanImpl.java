@@ -3,7 +3,7 @@ package com.unitbv.beansnaming;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component("dependantBean")
 public class DependantBeanImpl implements DependantBean {
 
     private SimpleBean simpleBean;

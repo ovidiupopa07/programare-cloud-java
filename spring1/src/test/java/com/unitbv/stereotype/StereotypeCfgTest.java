@@ -18,7 +18,7 @@ public class StereotypeCfgTest {
     // Hint 2: pay attention to the configuration of StereotypeCfg.class
     @Test
     void testStereotypeAnnotations() {
-        var ctx = new AnnotationConfigApplicationContext(StereotypeCfg.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(StereotypeCfg.class);
         ctx.registerShutdownHook();
 
         UserController userControllerBean = ctx.getBean(UserController.class);

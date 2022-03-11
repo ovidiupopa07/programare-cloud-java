@@ -14,7 +14,7 @@ public class FunBeanCfgTest {
         // hint 2: @Bean has 2 values called initMethod and destroyMethod
         // hint 3: you need to implement InitializingBean, DisposableBean
         // hint 4: there should be 8 logged messages
-        var ctx = new AnnotationConfigApplicationContext(FunBeanCfg.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(FunBeanCfg.class);
         ctx.registerShutdownHook();
 
         FunBean funBean = ctx.getBean(FunBean.class);
