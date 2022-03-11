@@ -3,6 +3,7 @@ package com.unitbv.datasource;
 import com.unitbv.model.User;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -71,78 +72,89 @@ public class UserDataSource {
     // <---------- TO DO ---------->
 
     // Get the full names for all users
-    public List<String> getFullNames(){
+    public List<String> getFullNames() {
         // your code here
-        return new ArrayList<>();
+        return users.stream().map(u -> u.getFirstName() + " " + u.getLastName()).collect(Collectors.toList());
     }
 
     // Get the job of the oldest user
-    public String getJobOfTheOldestUser(){
+    public String getJobOfTheOldestUser() {
         // your code here
-        return "";
+        return users.stream().max(Comparator.comparingInt(User::getAge)).get().getJob();
     }
 
     // Get user (distinct) jobs sorted alphabetically
-    public Set<String> getAllUserJobsSorted(){
+    public Set<String> getAllUserJobsSorted() {
         // your code here
-        return new HashSet<>();
+        return users.stream().map(User::getJob).collect(Collectors.toSet());
     }
 
     // Find user by first name - throw RuntimeException if not found
-    public User findByFirstName(String firstName){
+    public User findByFirstName(String firstName) {
         // your code here
-        return new User();
+        return users.stream().filter(user -> user.getFirstName().equals(firstName)).findFirst().orElseThrow(RuntimeException::new);
     }
 
     // Check if all users are older than the specified age
-    public boolean areAllUsersOlderThan(int age){
+    public boolean areAllUsersOlderThan(int age) {
         // your code here - please try with allMatch/noneMatch
-        return false;
+        return users.stream().allMatch(user -> user.getAge() > age);
     }
 
     // Add a new user - if there is a user with the same id, don't add and throw a RuntimeException
-    public void addUser(User user){
+    public void addUser(User user) {
         // your code here - HINT: use ifPresent() method from Optional
+        users.stream().filter(user1 -> user1.getId() == user.getId()).findFirst().ifPresentOrElse(
+                user1 -> {
+                    throw new RuntimeException();
+                },
+                () -> users.add(user)
+        );
+
     }
 
     // For all students (user.job = "student"), change the job to "graduate" and add 5 years to their age
-    public void changeAllStudentsJobsAndAges(){
+    public void changeAllStudentsJobsAndAges() {
         // your code here
+        users.stream().filter(user -> user.getJob().equals("student")).forEach(user -> {
+            user.setAge(user.getAge() + 5);
+            user.setJob("graduate");
+        });
     }
 
     // Count users that have the given Job
-    public long countUsersHavingTheSpecifiedJob(String job){
+    public long countUsersHavingTheSpecifiedJob(String job) {
         // your code here
-        return 0;
+        return users.stream().filter(user -> user.getJob().equals(job)).count();
     }
 
     // Get a map where the key is the user id and the value is the User object itself
-    public Map<Integer, User> getMapOfUsers(){
+    public Map<Integer, User> getMapOfUsers() {
         // your code here
-        return new HashMap<>();
+        return users.stream().collect(Collectors.toMap(User::getId, Function.identity()));
     }
 
     // Get a predicate for filtering by the given name - applies to both firstName and lastName
-    public Predicate<User> getPredicateForFilteringByName(String name){
+    public Predicate<User> getPredicateForFilteringByName(String name) {
         // your code here
-        return null;
+        return p -> p.getFirstName().equals(name) || p.getLastName().equals(name);
     }
 
     // Get a comparator for User type - compare by age ascending, then by job alphabetically
-    public Comparator<User> getUserComparator(){
+    public Comparator<User> getUserComparator() {
         // your code here
-        return null;
+        return Comparator.comparingInt(User::getAge).thenComparing(User::getJob);
     }
 
     // Filter users using the given Predicate
-    public List<User> filterUsers(Predicate<? super User> predicate){
+    public List<User> filterUsers(Predicate<? super User> predicate) {
         return users.stream()
                 .filter(predicate)
                 .collect(Collectors.toList());
     }
 
     // Sort users using the given Comparator
-    public List<User> sortUsers(Comparator<? super User> comparator){
+    public List<User> sortUsers(Comparator<? super User> comparator) {
         return users.stream()
                 .sorted(comparator)
                 .collect(Collectors.toList());
