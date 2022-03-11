@@ -18,6 +18,15 @@ public class FunBeanCfgTest {
         ctx.registerShutdownHook();
 
         FunBean funBean = ctx.getBean(FunBean.class);
+        DepBean depBean = ctx.getBean(DepBean.class);
+        funBean.setDepBean(depBean);
+        try {
+            funBean.afterPropertiesSet();
+            funBean.destroy();
+        }
+        catch (Exception ex){
+            System.out.println(ex.getStackTrace());
+        }
         assertNotNull(funBean);
     }
 }
