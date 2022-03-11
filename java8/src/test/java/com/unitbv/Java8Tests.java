@@ -125,6 +125,7 @@ public class Java8Tests {
         Set<String> expected = Stream.of("actor", "chef", "driver", "gamer", "student").collect(Collectors.toSet());
         Set<String> actual = dataSource.getAllUserJobsSorted();
 
+        int a = 5;
         Assertions.assertEquals(expected, actual);
     }
 
@@ -135,6 +136,7 @@ public class Java8Tests {
         User actual = dataSource.findByFirstName("Jayce");
         Assertions.assertEquals(expected, actual);
 
+        User a = new User();
         // shouldn't find Richard
         Assertions.assertThrows(RuntimeException.class, () -> dataSource.findByFirstName("Richard"));
     }
