@@ -4,19 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-//TODO test what will happen when you add a stereotype annotation
 @Component
-public class SimpleBeanImpl implements SimpleBean {
-
-
-    public SimpleBeanImpl() {
+public class CustomSimpleBeanImpl implements CustomSimpleBean{
+    public CustomSimpleBeanImpl() {
         Logger logger = LoggerFactory.getLogger(SimpleBeanImpl.class);
-        logger.info("[SimpleBeanImpl instantiation]");
+        logger.info("[CustomSimpleBeanImpl instantiation]");
     }
 
     @Override
     public String toString() {
-        return "SimpleBeanImpl{ code: " + hashCode() + "}";
+        return "CustomSimpleBeanImpl{ code: " + hashCode() + "}";
     }
-
 }

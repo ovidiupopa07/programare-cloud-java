@@ -44,9 +44,36 @@ class HumanAppCfgTest {
 
         Human humanBean = ctx.getBean(Human.class);
 
+
         assertNotNull(humanBean);
         assertNotNull(humanBean.getItem());
         assertNotNull(humanBean.getItem().getTitle());
+
+
+        ctx.close();
+    }
+
+    @Test
+    void testBook(){
+        ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(BookAppCfg.class);
+
+        Book bookBean = ctx.getBean(Book.class);
+
+        assertNotNull(bookBean);
+        assertNotNull(bookBean.getTitle());
+
+        ctx.close();
+    }
+
+    @Test
+    void TestPerson(){
+        ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(PersonAppCfg.class);
+
+        Person person = ctx.getBean(Person.class);
+
+        assertNotNull(person);
+        assertNotNull(person.getItem());
+        assertNotNull(person.getItem().getTitle());
 
         ctx.close();
     }

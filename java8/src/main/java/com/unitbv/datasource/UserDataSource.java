@@ -3,7 +3,9 @@ package com.unitbv.datasource;
 import com.unitbv.model.User;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -72,66 +74,88 @@ public class UserDataSource {
 
     // Get the full names for all users
     public List<String> getFullNames(){
-        // your code here
-        return new ArrayList<>();
+        List<String> strings = new ArrayList<>();
+        users.stream().forEach((s) ->  strings.add(s.getFirstName() + " " + s.getLastName()));
+        return strings;
     }
 
     // Get the job of the oldest user
     public String getJobOfTheOldestUser(){
         // your code here
-        return "";
+        return users.stream()
+                .sorted((u1, u2) -> Integer.compare(u2.getAge(), u1.getAge()))
+                .findFirst()
+                .orElse(new User()).getJob();
     }
 
     // Get user (distinct) jobs sorted alphabetically
     public Set<String> getAllUserJobsSorted(){
         // your code here
-        return new HashSet<>();
+        HashSet<String> sortedResult = new HashSet<>();
+        users.stream().sorted(Comparator.comparing(User::getJob)).forEach((f) -> sortedResult.add(f.getJob()));
+        return sortedResult;
     }
 
     // Find user by first name - throw RuntimeException if not found
     public User findByFirstName(String firstName){
         // your code here
-        return new User();
+        Optional<User> user = users.stream().filter(u -> u.getFirstName().equals(firstName)).findFirst();
+        if (user.get() == null){
+            throw new RuntimeException();
+        }
+
+        return user.get();
     }
 
     // Check if all users are older than the specified age
-    public boolean areAllUsersOlderThan(int age){
+    public boolean areAllUsersOlderThan(int age) {
         // your code here - please try with allMatch/noneMatch
-        return false;
+        Boolean result = users.stream().allMatch(a -> a.getAge() > age);
+        return result;
     }
 
     // Add a new user - if there is a user with the same id, don't add and throw a RuntimeException
     public void addUser(User user){
         // your code here - HINT: use ifPresent() method from Optional
+        Optional<User> optional = Optional.of(user);
+
+        optional.ifPresent(users::add);
+
     }
 
     // For all students (user.job = "student"), change the job to "graduate" and add 5 years to their age
     public void changeAllStudentsJobsAndAges(){
         // your code here
+        users.stream().filter(ft -> ft.getJob().equals("student")).forEach(f -> f.setAge(f.getAge() +5));
+        users.stream().filter(ft -> ft.getJob().equals("student")).forEach(f -> f.setJob("graduate"));
+
     }
 
     // Count users that have the given Job
     public long countUsersHavingTheSpecifiedJob(String job){
         // your code here
-        return 0;
+        long result = users.stream().filter(f -> f.getJob().equals(job)).count();
+        return result;
     }
 
     // Get a map where the key is the user id and the value is the User object itself
     public Map<Integer, User> getMapOfUsers(){
         // your code here
-        return new HashMap<>();
+        return users.stream().collect(Collectors.toMap(User::getId, Function.identity()));
     }
 
     // Get a predicate for filtering by the given name - applies to both firstName and lastName
     public Predicate<User> getPredicateForFilteringByName(String name){
         // your code here
-        return null;
+
+        Predicate<User> filterByName = (i) -> i.getFirstName().equals(name) || i.getLastName().equals(name);
+        return filterByName;
     }
 
     // Get a comparator for User type - compare by age ascending, then by job alphabetically
     public Comparator<User> getUserComparator(){
-        // your code here
-        return null;
+        Comparator<User> myComparator = Comparator.comparing(User::getAge).thenComparing(User::getJob);
+        return myComparator;
     }
 
     // Filter users using the given Predicate
