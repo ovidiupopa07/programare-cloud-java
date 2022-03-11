@@ -13,4 +13,10 @@ public class FunBean {
     private Logger logger = LoggerFactory.getLogger(FunBean.class);
 
     private DepBean depBean;
+
+    private void init() {
+
+    }
+
+    private void destroy(){}
 }
