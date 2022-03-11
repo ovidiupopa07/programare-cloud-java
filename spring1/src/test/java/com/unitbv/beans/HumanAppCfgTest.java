@@ -34,6 +34,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class HumanAppCfgTest {
+    //gata
 
     //TODO make Book.class and Person.class to be recognized as beans by Spring and inject their values
     // through constructors in order to make them compile

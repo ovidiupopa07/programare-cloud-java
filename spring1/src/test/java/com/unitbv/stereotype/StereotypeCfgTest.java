@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class StereotypeCfgTest {
 
+    //gata
     //TODO add stereotype annotations in order to instantiate the beans. Use more specific annotations where you can
     // Hint 1: there are 4 stereotype annotations
     // Hint 2: pay attention to the configuration of StereotypeCfg.class

@@ -11,6 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class AutowiredCfgTest {
+    //gata
     //TODO use constructor injection, setter injection and field injection to add dependency in FormatServices classes
 
     @Test
