@@ -35,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class HumanAppCfgTest {
 
-    //TODO make Book.class and Person.class to be recognized as beans by Spring and inject their values
+    // TODO make Book.class and Person.class to be recognized as beans by Spring and inject their values
     // through constructors in order to make them compile
     //title from Book class should be populated with a value that comes from application.properties file
     @Test

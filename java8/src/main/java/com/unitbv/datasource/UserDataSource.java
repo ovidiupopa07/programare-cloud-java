@@ -72,60 +72,75 @@ public class UserDataSource {
 
     // Get the full names for all users
     public List<String> getFullNames(){
-        // your code here
-        return new ArrayList<>();
+        return users.stream()
+                .map(user -> user.getFirstName() + " " + user.getLastName())
+                .collect(Collectors.toList());
     }
 
     // Get the job of the oldest user
     public String getJobOfTheOldestUser(){
-        // your code here
-        return "";
+        return users.stream()
+                .max(Comparator.comparingInt(User::getAge))
+                .orElse(new User()).getJob();
     }
 
     // Get user (distinct) jobs sorted alphabetically
     public Set<String> getAllUserJobsSorted(){
-        // your code here
-        return new HashSet<>();
+        return users.stream()
+                .map(User::getJob)
+                .sorted()
+                .collect(Collectors.toSet());
     }
 
     // Find user by first name - throw RuntimeException if not found
     public User findByFirstName(String firstName){
-        // your code here
-        return new User();
+        Optional<User> user = users.stream().filter(u -> u.getFirstName() == firstName).findFirst();
+        return user.get();
     }
 
     // Check if all users are older than the specified age
     public boolean areAllUsersOlderThan(int age){
-        // your code here - please try with allMatch/noneMatch
-        return false;
+        return users.stream()
+                .map(User::getAge)
+                .filter(a -> a>age)
+                .count() == users.size();
     }
 
     // Add a new user - if there is a user with the same id, don't add and throw a RuntimeException
     public void addUser(User user){
-        // your code here - HINT: use ifPresent() method from Optional
+        if (users.stream().anyMatch(u -> u.getId() == user.getId())) {
+            throw new RuntimeException("user with this id already exists");
+        } else {
+            users.add(user);
+        }
     }
 
     // For all students (user.job = "student"), change the job to "graduate" and add 5 years to their age
     public void changeAllStudentsJobsAndAges(){
-        // your code here
+        users.stream()
+                .filter(u -> u.getJob().equals("student"))
+                .forEach(user-> {
+                    user.setJob("graduate");
+                    user.setAge(user.getAge() + 5);
+                });
     }
 
     // Count users that have the given Job
     public long countUsersHavingTheSpecifiedJob(String job){
-        // your code here
-        return 0;
+        return users.stream()
+                .filter(u -> u.getJob().equals(job))
+                .count();
     }
 
     // Get a map where the key is the user id and the value is the User object itself
     public Map<Integer, User> getMapOfUsers(){
-        // your code here
-        return new HashMap<>();
+            return users.stream()
+                        .collect(Collectors.toMap(User::getId, user ->user));
     }
 
     // Get a predicate for filtering by the given name - applies to both firstName and lastName
     public Predicate<User> getPredicateForFilteringByName(String name){
-        // your code here
-        return null;
+        return u -> u.getFirstName().equals(name);
     }
 
     // Get a comparator for User type - compare by age ascending, then by job alphabetically
