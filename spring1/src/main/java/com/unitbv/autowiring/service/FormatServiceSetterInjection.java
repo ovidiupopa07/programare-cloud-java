@@ -11,4 +11,8 @@ public class FormatServiceSetterInjection {
     public void checkFormatted() {
         System.out.println(this.formatUtil.formatted(true));
     }
+
+    public void setFormatUtil(FormatUtil formatUtil) {
+        this.formatUtil = formatUtil;
+    }
 }
