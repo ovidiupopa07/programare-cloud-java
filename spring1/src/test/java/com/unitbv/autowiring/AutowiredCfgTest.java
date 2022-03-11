@@ -4,6 +4,7 @@ import com.unitbv.autowiring.service.FormatServiceConstructorInjection;
 import com.unitbv.autowiring.service.FormatServiceFieldInjection;
 import com.unitbv.autowiring.service.FormatServiceSetterInjection;
 import com.unitbv.autowiring.util.FormatUtil;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
