@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 //TODO: define 3 beans in AppConfig, one for each profile: dev, default, prod
 public class ProfilesTest {
