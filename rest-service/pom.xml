@@ -29,6 +29,12 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.13.1</version>
     </dependency>
+      <dependency>
+          <groupId>stereotype</groupId>
+          <artifactId>stereotype</artifactId>
+          <version>0.3.1</version>
+          <scope>compile</scope>
+      </dependency>
 
   </dependencies>
 
@@ -40,4 +46,11 @@
       </plugin>
     </plugins>
   </build>
+    <repositories>
+        <repository>
+            <id>clojars</id>
+            <name>Clojars</name>
+            <url>https://repo.clojars.org/</url>
+        </repository>
+    </repositories>
 </project>
