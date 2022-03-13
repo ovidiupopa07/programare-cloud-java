@@ -13,6 +13,7 @@ public class SimpleBeanImpl implements SimpleBean {
 
     @Override
     public String toString() {
+
         return "SimpleBeanImpl{ code: " + hashCode() + "}";
     }
 
