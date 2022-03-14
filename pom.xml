@@ -21,6 +21,8 @@
   <modules>
     <module>java8</module>
     <module>rest-service</module>
+    <module>spring1</module>
+    <module>eureka</module>
   </modules>
 
   <dependencies>
