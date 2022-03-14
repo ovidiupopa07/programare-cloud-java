@@ -97,6 +97,7 @@ public class Java8Tests {
     // <---------- TO DO ---------->
 
     @Test
+    // DONE
     public void testGetFullNames(){
         List<String> expected = Stream.of(
                 "John Wick",
@@ -113,6 +114,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testGetJobOfTheOldestUser(){
         String expected = "chef";
         String actual = dataSource.getJobOfTheOldestUser();
@@ -121,6 +123,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testGetAllUserJobsSorted(){
         Set<String> expected = Stream.of("actor", "chef", "driver", "gamer", "student").collect(Collectors.toSet());
         Set<String> actual = dataSource.getAllUserJobsSorted();
@@ -129,6 +132,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testFindByFirstName(){
         // should find Jayce
         User expected = new User(2, "Jayce", "Lucas", 35, "driver");
@@ -140,6 +144,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testAreAllUsersOlderThan(){
         int age = 10;
         boolean actual = dataSource.areAllUsersOlderThan(age);
@@ -151,6 +156,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testAddUser(){
         User user = new User(2, "Jay", "Lee", 25, "teacher");
         Assertions.assertThrows(RuntimeException.class,
@@ -161,6 +167,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testChangeAllStudentsJobsAndAges(){
         List<User> expected = Stream.of(
                 new User(1, "John", "Wick", 35, "actor"),
@@ -177,6 +184,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testCountUsersHavingTheSpecifiedJob(){
         String job = "actor";
         long expected = 2;
@@ -195,6 +203,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void getGetMapOfUsers(){
         Map<Integer, User> expected = Stream.of(new Object[][]{
                 { 1, new User(1, "John", "Wick", 35, "actor") },
@@ -211,6 +220,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testGetPredicateForFilteringName(){
         String name = "John";
         Predicate<User> predicate = dataSource.getPredicateForFilteringByName(name);
@@ -221,6 +231,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testSortUsers(){
         Comparator<User> comparator = dataSource.getUserComparator();
         List<User> expected = Stream.of(
@@ -237,6 +248,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testGetNumberOfYearsUntil(){
         LocalDate date = LocalDate.of(2050, 10, 5);
         int expected = 28;
@@ -245,6 +257,7 @@ public class Java8Tests {
     }
 
     @Test
+    // DONE
     public void testIsDateOccurringOnFriday13th(){
         // should be false
         LocalDate date = LocalDate.of(2022, 2, 13);

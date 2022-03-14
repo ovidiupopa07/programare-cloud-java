@@ -70,68 +70,102 @@ public class UserDataSource {
 
     // <---------- TO DO ---------->
 
-    // Get the full names for all users
+    // 1. Get the full names for all users
     public List<String> getFullNames(){
-        // your code here
-        return new ArrayList<>();
+        List<String> fullNames = users.stream()
+                .map(User::getFullName)
+                .collect(Collectors.toList());
+        return new ArrayList<>(fullNames);
     }
 
-    // Get the job of the oldest user
+    // 2. Get the job of the oldest user
     public String getJobOfTheOldestUser(){
-        // your code here
-        return "";
+        return users.stream()
+                .max(Comparator.comparingInt(User::getAge))
+                .orElse(new User()).getJob();
     }
 
-    // Get user (distinct) jobs sorted alphabetically
+    // 3. Get user (distinct) jobs sorted alphabetically
     public Set<String> getAllUserJobsSorted(){
-        // your code here
-        return new HashSet<>();
+        return users.stream()
+                .map(User::getJob)
+                .collect(Collectors.toSet());
     }
 
-    // Find user by first name - throw RuntimeException if not found
+    // 4. Find user by first name - throw RuntimeException if not found
     public User findByFirstName(String firstName){
-        // your code here
-        return new User();
+        User user = users.stream()
+                .filter(u -> u.getFirstName() == firstName)
+                .findFirst()
+                .orElse(null);
+        if(user == null) {
+            throw new RuntimeException();
+        }
+        return user;
     }
 
-    // Check if all users are older than the specified age
+    // 5. Check if all users are older than the specified age
     public boolean areAllUsersOlderThan(int age){
-        // your code here - please try with allMatch/noneMatch
-        return false;
+        return users.stream()
+                .map(User::getAge)
+                .allMatch(u -> u > age);
     }
 
-    // Add a new user - if there is a user with the same id, don't add and throw a RuntimeException
+    // 6. Add a new user - if there is a user with the same id, don't add and throw a RuntimeException
     public void addUser(User user){
-        // your code here - HINT: use ifPresent() method from Optional
+        Optional<User> userFind = users
+                .stream()
+                .filter(u -> u.getId() == user.getId())
+                .findFirst();
+        userFind.ifPresentOrElse((value) -> {
+                throw new RuntimeException();
+            }, () ->
+                {
+                    users.add(new User(1, "NewUser", "Wick", 35, "actor"));
+                });
+
     }
 
-    // For all students (user.job = "student"), change the job to "graduate" and add 5 years to their age
+    // 7. For all students (user.job = "student"), change the job to "graduate" and add 5 years to their age
     public void changeAllStudentsJobsAndAges(){
-        // your code here
+        users.stream()
+                .filter(u -> u.getJob() == "student")
+                .forEach(u -> {
+                    u.setJob("graduate");
+                    u.setAge(u.getAge() + 5);
+                });
     }
 
-    // Count users that have the given Job
+    // 8. Count users that have the given Job
     public long countUsersHavingTheSpecifiedJob(String job){
-        // your code here
-        return 0;
+        long count = users.stream()
+                .filter(u -> u.getJob() == job)
+                .count();
+        return count;
     }
 
-    // Get a map where the key is the user id and the value is the User object itself
+    // 9. Get a map where the key is the user id and the value is the User object itself
     public Map<Integer, User> getMapOfUsers(){
-        // your code here
-        return new HashMap<>();
+        return users.stream()
+                .collect(Collectors.toMap(u -> u.getId(), u -> u));
     }
 
-    // Get a predicate for filtering by the given name - applies to both firstName and lastName
+    // 10. Get a predicate for filtering by the given name - applies to both firstName and lastName
     public Predicate<User> getPredicateForFilteringByName(String name){
-        // your code here
-        return null;
+        return u -> u.getFirstName() == name;
     }
 
-    // Get a comparator for User type - compare by age ascending, then by job alphabetically
+    // 11. Get a comparator for User type - compare by age ascending, then by job alphabetically
     public Comparator<User> getUserComparator(){
-        // your code here
-        return null;
+        return new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                if(o1.getAge() == o2.getAge()) {
+                    return o1.getJob().compareTo(o2.getJob());
+                }
+                return o1.getAge() > o2.getAge() ? 1 : -1;
+            }
+        };
     }
 
     // Filter users using the given Predicate
