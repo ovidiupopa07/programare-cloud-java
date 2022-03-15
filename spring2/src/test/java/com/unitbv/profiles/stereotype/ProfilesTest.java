@@ -1,9 +1,9 @@
 package com.unitbv.profiles.stereotype;
 
-import com.unitbv.profiles.programatically.AppConfig;
-import com.unitbv.profiles.programatically.DataSourceConfig;
-import com.unitbv.profiles.programatically.DevDataSourceConfig;
-import com.unitbv.profiles.programatically.ProdDataSourceConfig;
+import com.unitbv.profiles.stereotype.AppConfig;
+import com.unitbv.profiles.stereotype.DataSourceConfig;
+import com.unitbv.profiles.stereotype.DevDataSourceConfig;
+import com.unitbv.profiles.stereotype.ProdDataSourceConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
