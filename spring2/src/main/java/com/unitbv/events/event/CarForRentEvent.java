@@ -6,4 +6,8 @@ public class CarForRentEvent extends ApplicationEvent {
     public CarForRentEvent(Object source) {
         super(source);
     }
+
+    public Object getCar() {
+        return source;
+    }
 }
