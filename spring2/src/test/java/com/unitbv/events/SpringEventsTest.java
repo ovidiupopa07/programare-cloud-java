@@ -20,6 +20,5 @@ public class SpringEventsTest {
         final CarService carService = context.getBean(CarService.class);
 
         assertEquals(carService.getAvailableCars().size(), 1);
-
     }
 }

@@ -1,6 +1,5 @@
 package com.unitbv.profiles.programatically;
 
-
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
