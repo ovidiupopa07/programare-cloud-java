@@ -12,6 +12,5 @@ public class PropertiesConfigTest {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         final Car car = ctx.getBean(Car.class);
         assertEquals(car.getModel(), "Audi");
-
     }
 }
