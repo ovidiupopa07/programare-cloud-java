@@ -1,9 +1,16 @@
 package com.unitbv.profiles.automatically;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 
 @Configuration
-@ComponentScan
+@ComponentScan("com.unitbv.profiles.automatically")
+@PropertySource("classpath:profiles.properties")
 public class AppConfig {
+
+    @Bean
+    @Profile("${spring.profile.active}")
+    public DevDataSourceConfig devDataSourceConfig()
+    {
+        return new DevDataSourceConfig();
+    }
 }
