@@ -6,5 +6,13 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class Car {
-    private final String model;
+	private String model;
+
+    public Car(String model) {
+        this.model = model;
+    }
+
+    public String getModel() {
+        return model;
+    }
 }
