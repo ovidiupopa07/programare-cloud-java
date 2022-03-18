@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 @RunWith(SpringRunner.class)
 public class ProfilesTest {
     
-    @Qualifier("devDataSourceConfig")
     @Autowired
     DataSourceConfig dataSourceConfig;
 
