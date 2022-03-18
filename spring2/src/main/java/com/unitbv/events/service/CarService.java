@@ -3,6 +3,8 @@ package com.unitbv.events.service;
 import com.unitbv.events.event.CarForRentEvent;
 import com.unitbv.events.model.Car;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,5 +20,6 @@ public class CarService {
     }
 
     public void addCarForRent(CarForRentEvent carForRentEvent) {
+        this.availableCars.add(carForRentEvent.getCar());
     }
 }
