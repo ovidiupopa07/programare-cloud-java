@@ -1,0 +1,5 @@
+com\unitbv\profiles\stereotype\ProfilesTest.class
+com\unitbv\profiles\programatically\ProfilesTest.class
+com\unitbv\properties\stereotype\PropertiesStereotypeTest.class
+com\unitbv\properties\config\PropertiesConfigTest.class
+com\unitbv\properties\programatically\PropertiesProgramTest.class

@@ -7,8 +7,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class DependsOnTest {
-    // TODO: create 3 beans: BeanA, BeanB and BeanC and make them depending on each other like:
-    // BeanA depends on BeanB and BeanB depends on BeanC
+    // TODO: cmake them depending on each other like:
+    // BeanA depends on BeanB and BeanB depends on BeanCreate 3 beans: BeanA, BeanB and BeanC and
     // use configuration class to declare beans
     @Test
     public void test() {
