@@ -13,7 +13,7 @@ public class PropertiesProgramTest {
 
         final Car car = ctx.getBean(Car.class);
 
-        assertEquals(car.getModel(), "Audi");
+        assertEquals("Audi", car.getModel());
 
     }
 }
