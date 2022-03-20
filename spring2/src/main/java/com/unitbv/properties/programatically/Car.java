@@ -7,4 +7,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Car {
     private final String model;
+    
+    public Car(String model) {
+    	this.model = model;
+    }
+
+	public Object getModel() {
+		return model;
+	}
 }

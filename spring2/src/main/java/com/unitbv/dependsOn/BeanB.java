@@ -1,5 +1,12 @@
 package com.unitbv.dependsOn;
 
-public class BeanB {
+import org.springframework.stereotype.Component;
 
+@Component
+public class BeanB {
+	private BeanC beanC;
+	
+	public BeanB(BeanC beanC) {
+		this.beanC = beanC;
+	}
 }
