@@ -13,4 +13,8 @@ public class User {
     private String lastName;
     private int age;
     private String job;
+
+    public String getFullName() {
+        return this.firstName + " " + this.lastName;
+    }
 }
