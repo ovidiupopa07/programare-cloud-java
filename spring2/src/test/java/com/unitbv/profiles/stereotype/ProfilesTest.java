@@ -1,9 +1,5 @@
 package com.unitbv.profiles.stereotype;
 
-import com.unitbv.profiles.stereotype.AppConfig;
-import com.unitbv.profiles.stereotype.DataSourceConfig;
-import com.unitbv.profiles.stereotype.DevDataSourceConfig;
-import com.unitbv.profiles.stereotype.ProdDataSourceConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -15,7 +11,7 @@ public class ProfilesTest {
     public void devProfile() {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.getEnvironment().setActiveProfiles("dev");
-        ctx.register(com.unitbv.profiles.programatically.AppConfig.class);
+        ctx.register(com.unitbv.profiles.stereotype.AppConfig.class);
         ctx.refresh();
         assertInstanceOf(DevDataSourceConfig.class, ctx.getBean(DataSourceConfig.class));
     }
@@ -24,10 +20,10 @@ public class ProfilesTest {
     public void prodProfile() {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.getEnvironment().setActiveProfiles("prod");
-        ctx.register(com.unitbv.profiles.programatically.AppConfig.class);
+        ctx.register(com.unitbv.profiles.stereotype.AppConfig.class);
         ctx.refresh();
 
-        assertInstanceOf(ProdDataSourceConfig.class, ctx.getBean(com.unitbv.profiles.programatically.DataSourceConfig.class));
+        assertInstanceOf(ProdDataSourceConfig.class, ctx.getBean(com.unitbv.profiles.stereotype.DataSourceConfig.class));
     }
 
     @Test

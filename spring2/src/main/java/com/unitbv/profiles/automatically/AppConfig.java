@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 
 @Configuration
 @ComponentScan(basePackages = "com.unitbv.profiles.automatically")
@@ -17,7 +16,7 @@ public class AppConfig {
 
     @Bean
     public DataSourceConfig dataSourceConfig() {
-        if(this.str == "dev") {
+        if(this.str.equals("dev")) {
             return new DevDataSourceConfig();
         } else {
             return new ProdDataSourceConfig();
