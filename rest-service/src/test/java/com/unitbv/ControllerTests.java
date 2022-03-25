@@ -159,7 +159,7 @@ public class ControllerTests {
         this.mockMvc.perform(post("/api/recipe/new").contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[*].name").value(recipeName));
+                .andExpect(jsonPath("$.name").value(recipeName));
 
         this.mockMvc.perform(get("/api/recipe/all"))
                 .andExpect(status().isOk())
