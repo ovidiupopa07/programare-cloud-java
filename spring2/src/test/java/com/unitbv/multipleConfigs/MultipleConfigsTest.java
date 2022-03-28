@@ -8,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class MultipleConfigsTest {
-    // TODO: create 2 classes: BeanA, BeanB and declare them as beans in 2 config class; use both of them in AppConfig class
+        // TODO: create 2 classes: BeanA, BeanB and declare them as beans in 2 config class; use both of them in AppConfig class
     @Test
     public void test() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
