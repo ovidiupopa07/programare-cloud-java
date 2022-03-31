@@ -20,6 +20,7 @@
 
   <modules>
     <module>java8</module>
+    <module>recipe</module>
     <module>rest-service</module>
     <module>spring1</module>
     <module>spring2</module>
