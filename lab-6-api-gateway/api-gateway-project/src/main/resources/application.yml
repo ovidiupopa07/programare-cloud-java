@@ -1,0 +1,5 @@
+server:
+  port: 8080
+#TODO use eureka to discover the URL for the service1 and service2
+#TODO configure spring cloud gateway to route the request to downstream services (service1 and service2) based on the paths(/greeting, /product)
+#and method types (GET,POST)
