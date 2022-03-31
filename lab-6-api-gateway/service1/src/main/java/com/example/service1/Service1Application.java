@@ -11,7 +11,7 @@ public class Service1Application {
 	}
 
 	// TODO
-	// 1. define a GET endpoint /greeting which should accept a query parameter "name"
+	// 1. define a GET endpoint /api/greeting which should accept a query parameter "name"
 	// 2. return should be a string returning a greeting: Hello Brasov
 	// 3. print request headers
 	// 4. register the service in eureka
