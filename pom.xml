@@ -25,6 +25,7 @@
     <module>spring1</module>
     <module>spring2</module>
     <module>eureka</module>
+    <module>lab-6-api-gateway</module>
   </modules>
 
   <dependencies>
