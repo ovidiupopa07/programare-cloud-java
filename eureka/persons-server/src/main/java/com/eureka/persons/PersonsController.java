@@ -1,5 +1,6 @@
 package com.eureka.persons;
 
+import com.eureka.persons.ex.NotFoundException;
 import com.eureka.persons.person.Person;
 import com.eureka.persons.services.PersonService;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,8 @@ public class PersonsController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Person> list() {
-        return new ArrayList<>();
+
+        return personService.findAll();
     }
 
     /**
@@ -36,6 +38,9 @@ public class PersonsController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void create(@RequestBody Person person, BindingResult result) {
+        if(result.hasErrors())
+            throw new PersonsException(HttpStatus.BAD_REQUEST, "Persons Exception");
+        personService.save(person);
     }
 
     /**
@@ -48,7 +53,8 @@ public class PersonsController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Person show(@PathVariable Long id) {
-        return new Person();
+
+        return personService.findById(id).orElseThrow(()->new NotFoundException(Person.class,id));
     }
 
     /**
@@ -62,6 +68,14 @@ public class PersonsController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     public void update(@RequestBody Person updatedPerson, @PathVariable Long id) {
+        Person result = personService.findById(id).orElseThrow(()->new NotFoundException(Person.class,id));
+        result.setFirstName(updatedPerson.getFirstName());
+        result.setLastName(updatedPerson.getLastName());
+        result.setPassword(updatedPerson.getPassword());
+        result.setHiringDate(updatedPerson.getHiringDate());
+        result.setNewPassword(updatedPerson.getNewPassword());
+        result.setUsername(updatedPerson.getUsername());
+        personService.save(result);
     }
 
     /**
@@ -73,5 +87,6 @@ public class PersonsController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
+        personService.delete(personService.findById(id).orElseThrow(()->new NotFoundException(Person.class,id)));
     }
 }

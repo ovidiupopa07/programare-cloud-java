@@ -21,6 +21,7 @@
   <modules>
     <module>java8</module>
     <module>rest-service</module>
+    <module>recipes</module>
     <module>spring1</module>
     <module>spring2</module>
     <module>eureka</module>

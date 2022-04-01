@@ -11,3 +11,13 @@ logging:
     root: INFO
     org.springframework: DEBUG
     com.apress.cems: DEBUG
+    com.netflix.eureka: OFF
+    com.netflix.discovery: OFF
+
+server:
+  port: 3000
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
