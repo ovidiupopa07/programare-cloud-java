@@ -13,4 +13,8 @@ import java.util.List;
 public class CreateRecipeRequest {
     private String name;
     private List<Ingredient> ingredients;
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
 }
