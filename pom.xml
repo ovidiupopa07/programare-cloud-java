@@ -21,6 +21,7 @@
   <modules>
     <module>java8</module>
     <module>rest-service</module>
+    <module>circuit-breaker</module>
   </modules>
 
   <dependencies>
