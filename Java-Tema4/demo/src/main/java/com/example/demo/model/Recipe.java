@@ -1,28 +1,27 @@
-package com.unitbv.request;
+package com.example.demo.model;
 
-import com.unitbv.model.Ingredient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import lombok.ToString;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class CreateRecipeRequest {
+@AllArgsConstructor
+@ToString
+public class Recipe {
 	private String name;
     private List<Ingredient> ingredients;
     
-
-    public CreateRecipeRequest() {
-		super();
-	}
-    
-    public CreateRecipeRequest(String name, List<Ingredient> ingredients) {
+    public Recipe(String name, List<Ingredient> ingredients) {
     	this.name = name;
     	this.ingredients = ingredients;
     }
+
+	public String getName() {
+		return name;
+	}
 
 	public List<Ingredient> getIngredients() {
 		return ingredients;

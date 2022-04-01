@@ -1,4 +1,4 @@
-package com.unitbv.model;
+package com.example.demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,15 +10,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Ingredient {
-    private String name;
+	private String name;
     private double quantity;
     private String unitOfMeasurement;
-        
-    public Ingredient() {
-		super();
-	}
-
-	public Ingredient(String name, double quantity, String unitOfMeasurement) {
+    
+    public Ingredient(String name, double quantity, String unitOfMeasurement) {
     	this.name = name;
     	this.quantity = quantity;
     	this.unitOfMeasurement = unitOfMeasurement;
