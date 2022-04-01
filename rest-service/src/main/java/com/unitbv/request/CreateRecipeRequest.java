@@ -14,3 +14,4 @@ public class CreateRecipeRequest {
     private String name;
     private List<Ingredient> ingredients;
 }
+
