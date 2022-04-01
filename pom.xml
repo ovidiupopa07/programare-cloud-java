@@ -24,6 +24,7 @@
     <module>spring1</module>
     <module>spring2</module>
     <module>eureka</module>
+    <module>recipe</module>
   </modules>
 
   <dependencies>
