@@ -21,9 +21,18 @@
   <modules>
     <module>java8</module>
     <module>rest-service</module>
+    <module>recipes</module>
+    <module>spring1</module>
+    <module>spring2</module>
+    <module>eureka</module>
   </modules>
 
   <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.3.15</version>
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
