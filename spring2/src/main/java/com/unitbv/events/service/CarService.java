@@ -18,5 +18,7 @@ public class CarService {
     }
 
     public void addCarForRent(CarForRentEvent carForRentEvent) {
+        System.out.println("Received car event - ");
+        this.availableCars.add(carForRentEvent.getCar());
     }
 }
