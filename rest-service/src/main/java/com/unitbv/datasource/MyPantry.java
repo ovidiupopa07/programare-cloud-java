@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 @Component
 public class MyPantry {
 
-    private List<Ingredient> ingredients;
+    private final List<Ingredient> ingredients;
 
     public MyPantry(){
         ingredients = Stream.of(

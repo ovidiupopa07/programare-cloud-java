@@ -15,12 +15,13 @@
   <name>programare-cloud-java</name>
 
   <properties>
-    <java.version>1.8</java.version>
+    <java.version>17</java.version>
   </properties>
 
   <modules>
     <module>java8</module>
     <module>rest-service</module>
+    <module>recipes-service</module>
   </modules>
 
   <dependencies>
