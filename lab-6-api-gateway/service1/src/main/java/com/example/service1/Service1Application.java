@@ -9,7 +9,7 @@ public class Service1Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Service1Application.class, args);
 	}
-
+//test
 	// TODO
 	// 1. define a GET endpoint /api/greeting which should accept a query parameter "name"
 	// 2. return should be a string returning a greeting: Hello Brasov
