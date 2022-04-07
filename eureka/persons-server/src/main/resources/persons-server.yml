@@ -25,6 +25,12 @@ server:
 
 # Discovery Server Access
 #TODO here you add configurations for eureka client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      healthcheck:
+        enabled: true
 
 info:
   app:

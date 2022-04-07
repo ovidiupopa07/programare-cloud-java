@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 public class PersonsException extends RuntimeException{
     private HttpStatus status;
 
-    public PersonsException(HttpStatus status, String message) {
+    public PersonsException(String message) {
         super(message);
         this.status = status;
     }
