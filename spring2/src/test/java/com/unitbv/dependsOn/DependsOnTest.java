@@ -22,6 +22,5 @@ public class DependsOnTest {
         assertNotNull(beanB);
         assertNotNull(beanC);
         context.close();
-
     }
 }
