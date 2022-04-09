@@ -7,6 +7,7 @@ import com.unitbv.autowiring.util.FormatUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.junit.jupiter.api.Disabled;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

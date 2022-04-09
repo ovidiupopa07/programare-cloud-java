@@ -8,6 +8,12 @@ import org.springframework.stereotype.Service;
 public class FormatServiceConstructorInjection {
     private final FormatUtil formatUtil;
 
+    @Autowired
+    // nu e necesar cand e un singur constructor
+    public FormatServiceConstructorInjection(FormatUtil formatUtil) {
+        this.formatUtil = formatUtil;
+    }
+
     public void checkFormatted() {
         System.out.println(this.formatUtil.formatted(true));
     }
