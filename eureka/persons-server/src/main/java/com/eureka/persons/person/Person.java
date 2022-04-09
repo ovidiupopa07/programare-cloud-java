@@ -23,7 +23,8 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 public class Person extends AbstractEntity {
-    interface BasicValidation{}
+    interface BasicValidation {
+    }
 
     @NotNull(groups = BasicValidation.class)
     @Size(min = 3, max = 30, groups = BasicValidation.class)
@@ -77,6 +78,54 @@ public class Person extends AbstractEntity {
         return String.format("Person[username='%s', firstName='%s', lastName='%s', hiringDate='%s']\n",
                 username, firstName, lastName, hiringDate.toString());
 
+
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDateTime getHiringDate() {
+        return hiringDate;
+    }
+
+    public void setHiringDate(LocalDateTime hiringDate) {
+        this.hiringDate = hiringDate;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
 }
