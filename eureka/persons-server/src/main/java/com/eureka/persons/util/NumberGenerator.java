@@ -16,3 +16,4 @@ public final class NumberGenerator {
         // prevent initialization fo this class
     }
 }
+

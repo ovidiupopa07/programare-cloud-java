@@ -34,3 +34,4 @@ public interface PersonRepo extends JpaRepository<Person, Long> {
     @Query("select p from Person p where p.hiringDate=:hd")
     List<Person> findByHiringDate(@Param("hd") LocalDateTime date);
 }
+
