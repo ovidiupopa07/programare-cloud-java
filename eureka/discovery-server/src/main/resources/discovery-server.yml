@@ -3,6 +3,12 @@ spring:
     name: discovery-service
 # Configure this Discovery Server
 #TODO here you add configurations for server
+server:
+  port: 3000
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
 
 logging:
   pattern:
