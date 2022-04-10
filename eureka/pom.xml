@@ -8,6 +8,12 @@
         <version>2.6.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <modules>
+        <module>discovery-server
+        </module>
+        <module>persons-server
+        </module>
+    </modules>
     <groupId>com.example</groupId>
     <artifactId>eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
