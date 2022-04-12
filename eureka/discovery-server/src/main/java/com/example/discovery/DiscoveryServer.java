@@ -8,8 +8,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 import java.io.IOException;
 
-@SpringBootApplication
 @EnableEurekaServer
+@SpringBootApplication
 public class DiscoveryServer {
 
     private static Logger logger = LoggerFactory.getLogger(DiscoveryServer.class);

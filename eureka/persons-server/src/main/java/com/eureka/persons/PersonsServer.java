@@ -6,12 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 import java.io.IOException;
 
+@EnableEurekaClient
 @EntityScan(basePackages = "com.eureka.persons")
 @SpringBootApplication
-@EnableEurekaClient
 public class PersonsServer {
 
     private static Logger logger = LoggerFactory.getLogger(PersonsServer.class);
