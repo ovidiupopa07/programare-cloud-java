@@ -2,7 +2,9 @@ package com.example.service1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
+@EnableEurekaClient
 @SpringBootApplication
 public class Service1Application {
 
@@ -15,6 +17,5 @@ public class Service1Application {
 	// 2. return should be a string returning a greeting: Hello Brasov
 	// 3. print request headers
 	// 4. register the service in eureka
-
 
 }
