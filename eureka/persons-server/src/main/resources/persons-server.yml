@@ -25,6 +25,13 @@ server:
 
 # Discovery Server Access
 #TODO here you add configurations for eureka client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    fetchRegistry: true
+  instance:
+    prefer-ip-address: true
 
 info:
   app:

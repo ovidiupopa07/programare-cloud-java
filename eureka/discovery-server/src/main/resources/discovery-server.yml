@@ -11,3 +11,10 @@ logging:
     root: INFO
     org.springframework: DEBUG
     com.apress.cems: DEBUG
+
+server:
+  port: 8761
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
