@@ -1,11 +1,14 @@
 spring:
   application:
-    name: spring-cloud-eureka-client
+    name: service1
 
 server:
   port: 8081
+  address: 0.0.0.0
   
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:3000/eureka}
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true

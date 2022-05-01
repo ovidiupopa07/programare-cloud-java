@@ -28,8 +28,10 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:3000/eureka/
+      defaultZone: http://localhost:8761/eureka/
     fetchRegistry: true
+  instance:
+    prefer-ip-address: true
 
 info:
   app:

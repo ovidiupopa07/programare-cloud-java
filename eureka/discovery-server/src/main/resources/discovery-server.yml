@@ -13,7 +13,7 @@ logging:
     com.apress.cems: DEBUG
 
 server:
-  port: 3000
+  port: 8761
 eureka:
   client:
     registerWithEureka: false
