@@ -1,3 +1,15 @@
 
 server:
   port: 8082
+    address: 0.0.0.0
+
+  spring:
+    application:
+      name: service2
+
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:3000/eureka/
+      register-with-eureka: true
+      fetch-registry: true
