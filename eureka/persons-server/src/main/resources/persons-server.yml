@@ -26,6 +26,13 @@ server:
 # Discovery Server Access
 #TODO here you add configurations for eureka client
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.81.11:3000/eureka/
+      healthcheck:
+        enabled: true
+
 info:
   app:
     name: persons-server
