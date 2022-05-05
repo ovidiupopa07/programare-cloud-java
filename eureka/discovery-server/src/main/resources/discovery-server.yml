@@ -6,6 +6,7 @@ spring:
 
 server:
   port: 3000
+
 eureka:
   client:
     registerWithEureka: false
