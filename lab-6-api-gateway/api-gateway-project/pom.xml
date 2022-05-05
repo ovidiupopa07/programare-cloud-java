@@ -9,28 +9,23 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>api-gateway-project</artifactId>
+    <artifactId>lab-6-api-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>api-gateway-project</name>
-    <description>api-gateway-project</description>
+    <name>lab-6-api-gateway</name>
+    <description>lab-6-api-gateway</description>
     <properties>
         <java.version>11</java.version>
-        <spring-cloud.version>2021.0.1</spring-cloud.version>
     </properties>
-
-
+    <packaging>pom</packaging>
+    <modules>
+        <module>api-gateway-project</module>
+        <module>service1</module>
+        <module>service2</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -38,23 +33,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
