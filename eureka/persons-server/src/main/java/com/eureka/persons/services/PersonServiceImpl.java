@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 @Transactional
 public class PersonServiceImpl implements PersonService {
-    private PersonRepo personRepo;
+    private final PersonRepo personRepo;
 
     public PersonServiceImpl(PersonRepo personRepo) {
         this.personRepo = personRepo;
