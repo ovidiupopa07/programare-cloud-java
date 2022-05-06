@@ -1,0 +1,19 @@
+Create:
+1. A new git repository
+2. A new application that will be our config server
+3. Another application that will be our service that connects to the config server and retrieves properties
+
+The git repository:
+1. Contains yml files for multiple environments (profiles): local, dev
+2. The yml files contain some properties of your choice - the properties' values should be different among profiles
+
+The config server:
+1. Has access to our git repository
+2. Shares properties with any service that connects to it
+HINT: add spring-cloud-config-server dependency
+
+The service application:
+1. Imports the properties from the config server
+2. Has some endpoints that use the properties
+3. Runs on different profiles (local, dev, none) and uses the according properties
+4. If a property is missing, a default value should be specified
