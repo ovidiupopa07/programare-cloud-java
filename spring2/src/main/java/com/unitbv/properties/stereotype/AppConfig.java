@@ -1,11 +1,23 @@
 package com.unitbv.properties.stereotype;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @RequiredArgsConstructor
 @ComponentScan
+@PropertySource("classpath:application.properties")
 public class AppConfig {
+    public String model;
+
+    @Bean
+    Car car()
+    {
+        //System.out.println("4"+model);
+        return new Car(model);
+    }
+
 }

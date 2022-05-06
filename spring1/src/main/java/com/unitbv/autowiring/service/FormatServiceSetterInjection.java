@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 public class FormatServiceSetterInjection {
     private FormatUtil formatUtil;
 
+    public void setFormatUtil(FormatUtil formatUtil) {
+        this.formatUtil = formatUtil;
+    }
+
     public void checkFormatted() {
         System.out.println(this.formatUtil.formatted(true));
     }
