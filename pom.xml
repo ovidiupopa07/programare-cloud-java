@@ -22,6 +22,7 @@
     <module>java8</module>
     <module>rest-service</module>
     <module>eureka</module>
+    <module>spring1</module>
     <module>lab-6-api-gateway</module>
   </modules>
 
