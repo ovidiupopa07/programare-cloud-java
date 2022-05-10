@@ -214,10 +214,8 @@ public class Java8Tests {
     public void testGetPredicateForFilteringName(){
         String name = "John";
         Predicate<User> predicate = dataSource.getPredicateForFilteringByName(name);
-        List<User> expected = Stream.of(
-                new User(1, "John", "Wick", 35, "actor"),
-                new User(7, "Mark", "John", 17, "student")
-        ).collect(Collectors.toList());
+        List<User> expected = Stream.of(new User(1, "John", "Wick", 35, "actor"))
+                .collect(Collectors.toList());
         List<User> actual = dataSource.filterUsers(predicate);
         Assertions.assertEquals(expected, actual);
     }
